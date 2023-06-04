@@ -171,3 +171,5 @@ crashlytics-build.properties
 /.cache/
 /dist/
 .vscode/
+
+*target*

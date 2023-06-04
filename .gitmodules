@@ -1,0 +1,3 @@
+[submodule "javy_compiler/javy"]
+	path = javy_compiler/javy
+	url = https://github.com/bytecodealliance/javy.git
