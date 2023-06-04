@@ -1,4 +1,8 @@
 {
+  "extends": "assemblyscript/std/assembly.json",
+  "include": [
+    "./**/*.ts"
+  ],
   "compilerOptions": {
     // "module": "commonjs",
     "module": "commonjs",
@@ -19,12 +23,4 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*",
-    "wasm_modules/*"
-  ],
-  // "exclude": [
-  //   ".git",
-  //   "node_modules"
-  // ]
 }
