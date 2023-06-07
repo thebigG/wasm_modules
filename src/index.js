@@ -46,7 +46,7 @@ async function instantiate(module, imports = {}) {
     const {
         memory,
         add,
-        hello_world,
+        benchmarkWASM,
       } = await (async url => instantiate(
         await (async () => {
           try { return await globalThis.WebAssembly.compileStreaming(globalThis.fetch(url)); }
@@ -54,7 +54,7 @@ async function instantiate(module, imports = {}) {
         })(), {
         }
       ))(new URL("release.wasm", import.meta.url));
-      hello_world();
+      benchmarkWASM();
   }
 
   initWASM();
@@ -62,11 +62,11 @@ async function instantiate(module, imports = {}) {
 
 // import { add, hello_world } from "./wasm_modules/hello_world_js/build/release.js";
 // document.body.innerText = add(1, 2).toString();
-let iDiv = document.createElement('div');
-iDiv.id = 'block';
-iDiv.className = 'block';
-document.body.appendChild(iDiv);
+// let iDiv = document.createElement('div');
+// iDiv.id = 'block';
+// iDiv.className = 'block';
+// document.body.appendChild(iDiv);
 
-let test_el = document.createElement("h8");
-test_el.innerHTML = "Hello World!";
-document.body.appendChild(test_el);
+// let test_el = document.createElement("h8");
+// test_el.innerHTML = "Hello World!";
+// document.body.appendChild(test_el);

@@ -2,13 +2,48 @@
 <html lang="en">
 <head>
 <script type="module">
-import { add, hello_world } from "./build/release.js";
+import { add, benchmarkWASM } from "./build/release.js";
 document.body.innerText = add(1, 2);
 var iDiv = document.createElement('div');
 iDiv.id = 'block';
 iDiv.className = 'block';
-document.body.appendChild(iDIV);
-hello_world();
+document.body.appendChild(iDiv);
+let before = Date.now();
+benchmarkWASM();
+let after = Date.now();
+console.log("time in WASM2:"+ (after - before).toString());
+
+export function multiplyMatrixJS(A, B){
+  let C = new Array(A.length);
+  for(let i = 0;i<A.length;i++){
+    C[i] = new Array(A.length);
+    for(let j = 0;j<A.length;j++){
+      C[i][j] = C[i][j] + A[i][j]*B[i][j]
+    }
+  }
+}
+
+
+export function benchmarJS() {
+  let before = Date.now();
+  const MATRIX_SIZE = 10000;
+//   console.log("Hello world from JS!");
+  const A = new Array(MATRIX_SIZE);
+  for(let i = 0;i< A.length;i++){
+    A[i] = new Array(MATRIX_SIZE);
+  }
+  let B = new Array(MATRIX_SIZE);
+  for(let i = 0;i< B.length;i++){
+    B[i] = new Array(MATRIX_SIZE);
+  }
+  multiplyMatrixJS(A, B);
+  let after = Date.now();
+  console.log("time in JS:"+ (after - before).toString());
+}
+
+benchmarJS();
+
+
 </script>
 </head>
 <body></body>
