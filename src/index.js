@@ -54,7 +54,7 @@ async function instantiate(module, imports = {}) {
         })(), {
         }
       ))(new URL("release.wasm", import.meta.url));
-      benchmarkWASM();
+      // benchmarkWASM();
   }
 
   initWASM();

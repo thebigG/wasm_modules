@@ -9,17 +9,21 @@ export function multiplyMatrixWASM(A: Array<i32[] >, B: Array<i32[]>): void{
   for(let i = 0;i<A.length;i++){
     C[i] = new Array<i32>(A.length);
     for(let j = 0;j<A.length;j++){
-      C[i][j] = C[i][j] + A[i][j]*B[i][j]
+      for(let k = 0;k<A.length;k++){
+        C[i][j] += (A[i][k]*B[k][j]);
+      }
     }
   }
+
+  // console.log("New array WASM:" + C.toString());
 }
 
 
 export function benchmarkWASM(): void {
-  let before = Date.now();
+  // let before = Date.now();
   // console.log("Hello world from WASM!");
   // let A = new Array<Array<number>>(100);
-  const MATRIX_SIZE = 10000;
+  const MATRIX_SIZE = 512;
   const A = new Array<i32[] >(MATRIX_SIZE);
   for(let i = 0;i< A.length;i++){
     A[i] = new Array<i32>(MATRIX_SIZE);
@@ -28,9 +32,12 @@ export function benchmarkWASM(): void {
   for(let i = 0;i< B.length;i++){
     B[i] = new Array<i32>(MATRIX_SIZE);
   }
+  
+  // let before = Date.now();
   multiplyMatrixWASM(A, B);
-  let after = Date.now();
-  console.log("time in WASM:"+ (after - before).toString());
+  // let after = Date.now();
+  // console.log("time in WASM:"+ (after - before).toString());
+  
 }
 
 // In order to access the dom from WASM:https://github.com/lume/asdom
