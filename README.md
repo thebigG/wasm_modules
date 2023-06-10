@@ -14,5 +14,5 @@ Load wasm modules.
 
 `cargo install cargo-generate`  
 `cargo generate --git https://github.com/rustwasm/wasm-pack-template`
-`curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`
-` wasm-pack build`
+`curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`  
+` wasm-pack build -t web`
