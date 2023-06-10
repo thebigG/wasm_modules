@@ -10,8 +10,8 @@
   "description": "TypeScript app with parcel bundler.",
   "main": "lib/parcel-typescript-example.js",
   "scripts": {
-    "start": "parcel serve src/index.html",
-    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url .",
+    "start": "npm run build && hugo serve",
+    "build": "wasm-pack build crate && tsc && mkdir -p data && webpack --mode production && hugo",
     "watch": "parcel watch src/index.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -22,10 +22,17 @@
   },
   "homepage": "https://github.com/thebigG/wasm_modules",
   "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "1.0.1",
+    "assets-webpack-plugin": "^3.9.12",
     "cross-env": "^5.2.0",
     "gh-pages": "^1.2.0",
-    "parcel-bundler": "^1.9.7",
-    "typescript": "^5.1.2"
+    "html-webpack-plugin": "^4.5.2",
+    "text-encoding": "^0.7.0",
+    "typescript": "^5.1.2",
+    "webpack": "^5.58.2",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "4.15.0",
+    "worker-plugin": "5.0.1"
   },
   "dependencies": {
     "@bjorn3/browser_wasi_shim": "^0.2.10"

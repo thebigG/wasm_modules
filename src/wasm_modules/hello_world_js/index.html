@@ -3,6 +3,7 @@
 <head>
 <script type="module">
 import { add, benchmarkWASM } from "./build/release.js";
+import {greet} from "../../hello-world-rust/pkg"
 document.body.innerText = add(1, 2);
 var iDiv = document.createElement('div');
 iDiv.id = 'block';
@@ -31,9 +32,7 @@ export function multiplyMatrixJS(A, B){
 
 
 export function benchmarJS() {
-//   let before = Date.now();
   const MATRIX_SIZE = 512;
-//   console.log("Hello world from JS!");
   const A = new Array(MATRIX_SIZE);
   for(let i = 0;i< A.length;i++){
     A[i] = new Array(MATRIX_SIZE);
