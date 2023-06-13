@@ -3,7 +3,7 @@
 <head>
 <script type="module">
 import { add, benchmarkWASM } from "./build/release.js";
-import {greet} from "../../hello-world-rust/pkg"
+// import {greet} from "../../hello-world-rust/pkg"
 document.body.innerText = add(1, 2);
 var iDiv = document.createElement('div');
 iDiv.id = 'block';
@@ -21,18 +21,28 @@ export function multiplyMatrixJS(A, B){
     for(let j = 0;j<A.length;j++){
       C[i][j]= 0;
     }
+  }
+  let result = 0;
+
+  for(let i = 0;i<A.length;i++){
+    // for(let j = 0;j<A.length;j++){
+    //   C[i][j]= 0;
+    // }
     for(let j = 0;j<A.length;j++){
         for(let k = 0;k<A.length;k++){
-            C[i][j] += (A[i][k]*B[k][j]);
+            // C[i][j] += (A[i][k]*B[k][j]);
+            // C[i][j] = 0 + A[i][k];
+            // C[i][j] = 2;
+            result = Math.random() * 5;
         }
     }
   }
-  console.log("New array JS:" + C);
+  // console.log("New array JS:" + C);
 }
 
 
-export function benchmarJS() {
-  const MATRIX_SIZE = 512;
+export function benchmarkJS() {
+  const MATRIX_SIZE = 128;
   const A = new Array(MATRIX_SIZE);
   for(let i = 0;i< A.length;i++){
     A[i] = new Array(MATRIX_SIZE);
@@ -47,13 +57,30 @@ export function benchmarJS() {
         B[i][index] = 2;
      }
   }
-  let before = Date.now();
-  multiplyMatrixJS(A, B);
-  let after = Date.now();
-  console.log("time in JS:"+ (after - before).toString());
+
+
+  let number_of_runs = 100.0;
+    let  avg_execution_time = 0.0;
+    let i = 0;
+    while(i<number_of_runs){
+        let before = Date.now();
+        multiplyMatrixJS(A, B);
+        let after = Date.now();
+        avg_execution_time += after - before;
+        i++;
+    }
+    let elapsed = avg_execution_time / number_of_runs;
+    console.log("time in JS:"+ (elapsed).toString());  
+
+    // let before = Date.now();
+    // multiplyMatrixJS(A, B);
+    // let after = Date.now();
+    // console.log("time in JS:"+ (after - before).toString());
 }
 
-benchmarJS();
+
+
+benchmarkJS();
 
 
 </script>

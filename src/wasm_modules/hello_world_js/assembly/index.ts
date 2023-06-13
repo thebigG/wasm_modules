@@ -23,7 +23,7 @@ export function benchmarkWASM(): void {
   // let before = Date.now();
   // console.log("Hello world from WASM!");
   // let A = new Array<Array<number>>(100);
-  const MATRIX_SIZE = 512;
+  const MATRIX_SIZE = 128;
   const A = new Array<i32[] >(MATRIX_SIZE);
   for(let i = 0;i< A.length;i++){
     A[i] = new Array<i32>(MATRIX_SIZE);

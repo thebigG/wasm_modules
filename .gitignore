@@ -213,3 +213,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 *src/wasm_modules/hello_world_js/build*
+*pkg*
