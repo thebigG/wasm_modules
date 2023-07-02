@@ -24,9 +24,14 @@
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "1.0.1",
     "assets-webpack-plugin": "^3.9.12",
+    "bulma": "^0.9.4",
     "cross-env": "^5.2.0",
+    "css-loader": "^6.8.1",
     "gh-pages": "^1.2.0",
     "html-webpack-plugin": "^4.5.2",
+    "mini-css-extract-plugin": "^2.7.6",
+    "node-sass": "^9.0.0",
+    "style-loader": "^3.3.3",
     "text-encoding": "^0.7.0",
     "typescript": "^5.1.2",
     "webpack": "^5.58.2",
@@ -35,6 +40,7 @@
     "worker-plugin": "5.0.1"
   },
   "dependencies": {
-    "@bjorn3/browser_wasi_shim": "^0.2.10"
+    "@bjorn3/browser_wasi_shim": "^0.2.10",
+    "sass-loader": "^13.3.2"
   }
 }

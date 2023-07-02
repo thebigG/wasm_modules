@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkerPlugin = require("worker-plugin");
 const AssetsPlugin = require("assets-webpack-plugin");
@@ -6,7 +7,7 @@ const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const webpack = require('webpack');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   devtool: "source-map",
   plugins: [
     new WorkerPlugin(),
@@ -19,7 +20,11 @@ module.exports = {
   new webpack.ProvidePlugin({
     TextDecoder: ['text-encoding', 'TextDecoder'],
     TextEncoder: ['text-encoding', 'TextEncoder']
-  })
+  }),
+
+  new MiniCssExtractPlugin({
+    filename: 'css/mystyles.css'
+  }),
   ],
   output: {
     path: __dirname + '/dist',
@@ -37,7 +42,26 @@ module.exports = {
         not: /module/,
       },
       type: "asset/resource",
-    }]
+    },
+
+    {
+      test: /\.scss$/,
+      use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              // options...
+            }
+          }
+        ]
+    }
+  
+  ]
   }
 };
 
