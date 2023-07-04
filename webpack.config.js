@@ -59,7 +59,16 @@ module.exports = {
             }
           }
         ]
-    }
+    },
+    {
+      test: /\.(ts|tsx)?$/,
+      use: {
+        loader: 'ts-loader'
+      },
+      exclude:[/node_modules/,/\/src\/wasm_modules\/hello_world_js\/assembly/,
+              /\/src\/wasm_modules\/hello-world-rust/],
+      // excludes: ["node_modules"],
+   }
   
   ]
   }

@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@bjorn3/browser_wasi_shim": "^0.2.10",
-    "sass-loader": "^13.3.2"
+    "sass-loader": "^13.3.2",
+    "ts-loader": "^9.4.4"
   }
 }

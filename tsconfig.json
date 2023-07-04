@@ -23,6 +23,8 @@
     "src/**/*",
     "wasm_modules/*"
   ],
+  "exclude": ["src/wasm_modules/hello_world_js/assembly/*",
+              "src/wasm_modules/hello-world-rust/*/*"],
 
   "allowJs": true,
   "skipLibCheck": true,
